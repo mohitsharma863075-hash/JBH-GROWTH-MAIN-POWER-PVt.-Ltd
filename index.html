@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>JBH Growth Manpower | Future-Ready HR Solutions</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes, viewport-fit=cover">
+    <title>JBH Growth Manpower | Premium HR Solutions</title>
     <!-- Google Fonts + Font Awesome -->
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -19,14 +19,15 @@
 
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
-            background: #fefcf5;
+            background: #FFFBF5;
             color: #1E2F3A;
-            line-height: 1.45;
+            line-height: 1.5;
             scroll-behavior: smooth;
+            overflow-x: hidden;
         }
 
         ::-webkit-scrollbar {
-            width: 8px;
+            width: 6px;
         }
         ::-webkit-scrollbar-track {
             background: #F2E8D5;
@@ -39,51 +40,97 @@
         .container {
             max-width: 1320px;
             margin: 0 auto;
-            padding: 1.5rem 2rem;
+            padding: 0.8rem 1.5rem 1rem;
+            position: relative;
+            z-index: 2;
         }
 
-        /* NEW THEME: Warm & sophisticated (terracotta + deep teal) */
         :root {
             --primary: #C25D2E;
             --primary-dark: #A1451F;
+            --primary-light: #E27A4A;
             --secondary: #1E6B6F;
+            --secondary-dark: #0F4F52;
+            --secondary-light: #3A8F94;
             --accent-cream: #FFF6EA;
             --gray-light: #F9F4EA;
             --text-dark: #2C3E42;
-            --shadow-sm: 0 12px 28px rgba(0, 0, 0, 0.05), 0 0 0 1px rgba(194, 93, 46, 0.08);
-            --shadow-hover: 0 24px 44px -12px rgba(0, 0, 0, 0.12), 0 0 0 1px rgba(194, 93, 46, 0.2);
+            --shadow-sm: 0 8px 24px rgba(0, 0, 0, 0.04), 0 0 0 1px rgba(194, 93, 46, 0.08);
+            --shadow-md: 0 20px 35px -12px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(194, 93, 46, 0.12);
+            --shadow-hover: 0 28px 40px -15px rgba(194, 93, 46, 0.25), 0 0 0 1px rgba(194, 93, 46, 0.3);
+            --gradient-gold: linear-gradient(135deg, #F9E0B0, #E8C48A);
+            --gradient-primary: linear-gradient(135deg, var(--primary), var(--primary-dark));
         }
 
-        /* Navigation - refined minimal */
+        /* Animated Background */
+        #particles-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0.35;
+        }
+
+        /* Glassmorphic Navbar */
         .navbar {
             position: sticky;
-            top: 20px;
+            top: 16px;
             z-index: 1000;
             background: rgba(255, 252, 245, 0.92);
-            backdrop-filter: blur(12px);
+            backdrop-filter: blur(20px);
             border-radius: 80px;
-            margin-bottom: 2rem;
-            padding: 0.6rem 2rem;
-            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.03), 0 0 0 1px rgba(194, 93, 46, 0.15);
+            margin-bottom: 1.5rem;
+            padding: 0.7rem 1.8rem;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05), 0 0 0 1px rgba(194, 93, 46, 0.15);
             display: flex;
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
             gap: 1rem;
+            transition: all 0.3s ease;
         }
+
+        .logo img {
+            width: 56px;
+            border-radius: 16px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease;
+        }
+        .logo img:hover { transform: scale(1.02); }
 
         .nav-links {
             display: flex;
-            gap: 2rem;
+            gap: 1.8rem;
             flex-wrap: wrap;
+            justify-content: center;
         }
 
         .nav-links a {
             text-decoration: none;
             color: #2C3E42;
             font-weight: 600;
-            font-size: 0.95rem;
-            transition: 0.2s;
+            font-size: 0.9rem;
+            transition: 0.25s;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 0;
+            width: 0%;
+            height: 2.5px;
+            background: var(--primary);
+            border-radius: 2px;
+            transition: 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
         }
 
         .nav-links a:hover {
@@ -91,58 +138,92 @@
         }
 
         .nav-contact {
-            background: var(--primary);
+            background: var(--gradient-primary);
             color: white;
-            padding: 0.5rem 1.4rem;
+            padding: 0.55rem 1.6rem;
             border-radius: 60px;
             text-decoration: none;
             font-weight: 700;
-            transition: all 0.2s;
-            box-shadow: 0 2px 6px rgba(194, 93, 46, 0.2);
+            font-size: 0.85rem;
+            transition: all 0.3s;
+            box-shadow: 0 6px 14px rgba(194, 93, 46, 0.35);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
         }
 
         .nav-contact:hover {
-            background: var(--primary-dark);
-            transform: scale(0.97);
+            transform: translateY(-2px);
+            box-shadow: 0 12px 24px rgba(194, 93, 46, 0.45);
+            background: linear-gradient(135deg, var(--primary-dark), #8f3a1a);
         }
 
-        /* Hero revamp with gradient accent */
+        /* Hero - Elevated */
         .hero {
             text-align: center;
-            margin-bottom: 4rem;
-            padding: 2.5rem 1rem 2rem;
-            background: linear-gradient(145deg, #FFF8EF 0%, #FFEFE2 100%);
+            margin-bottom: 3rem;
+            padding: 2.5rem 1.5rem 2.8rem;
+            background: radial-gradient(ellipse at 30% 40%, rgba(255, 248, 235, 0.98), rgba(255, 239, 226, 0.85));
             border-radius: 56px;
-            box-shadow: var(--shadow-sm);
+            box-shadow: var(--shadow-md);
             position: relative;
             overflow: hidden;
+            border: 1px solid rgba(194, 93, 46, 0.25);
         }
 
-        .hero:before {
+        .hero::before {
             content: '';
             position: absolute;
-            top: -30%;
-            right: -20%;
+            top: -20%;
+            left: -10%;
             width: 280px;
             height: 280px;
-            background: radial-gradient(circle, rgba(194,93,46,0.08) 0%, rgba(30,107,111,0.02) 80%);
+            background: radial-gradient(circle, rgba(194,93,46,0.12) 0%, transparent 70%);
             border-radius: 50%;
-            pointer-events: none;
+            animation: float 14s infinite alternate;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -15%;
+            right: -5%;
+            width: 260px;
+            height: 260px;
+            background: radial-gradient(circle, rgba(30,107,111,0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: floatReverse 12s infinite alternate;
+        }
+
+        @keyframes float {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(25px, 18px) scale(1.08); }
+        }
+        @keyframes floatReverse {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(-20px, -15px) scale(1.08); }
         }
 
         .hero h1 {
-            font-size: 2.8rem;
+            font-size: 3rem;
             font-weight: 800;
-            background: linear-gradient(125deg, #C25D2E, #1E6B6F);
+            background: linear-gradient(125deg, #C25D2E, #1E6B6F, #C25D2E);
+            background-size: 200% auto;
             background-clip: text;
             -webkit-background-clip: text;
             color: transparent;
+            animation: shimmer 8s linear infinite;
             letter-spacing: -0.02em;
-            margin-bottom: 0.75rem;
+            margin-bottom: 0.8rem;
+        }
+
+        @keyframes shimmer {
+            0% { background-position: 0% center; }
+            100% { background-position: 200% center; }
         }
 
         .hero p.tagline {
-            font-size: 1.2rem;
+            font-size: 1.15rem;
             color: #4F6F7A;
             font-weight: 500;
             border-top: 2px solid #EBDCCB;
@@ -150,48 +231,82 @@
             padding-top: 0.8rem;
         }
 
-        /* Service Cards — fresh minimal elegance */
+        /* Service Cards - Premium */
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
-            gap: 2rem;
+            grid-template-columns: 1fr;
+            gap: 1.8rem;
             margin-bottom: 4rem;
+        }
+
+        @media (min-width: 640px) {
+            .services-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (min-width: 1024px) {
+            .services-grid { grid-template-columns: repeat(3, 1fr); }
         }
 
         .service-card {
             background: #FFFFFF;
             border-radius: 2rem;
-            padding: 2rem 1.8rem;
-            transition: all 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            padding: 1.8rem;
+            transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
             border: 1px solid #F0E3D6;
-            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.02);
+            box-shadow: var(--shadow-sm);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary), var(--primary-light));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.5s ease;
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
         }
 
         .service-card:hover {
-            transform: translateY(-8px);
+            transform: translateY(-10px);
             box-shadow: var(--shadow-hover);
-            border-color: var(--primary);
+            border-color: var(--primary-light);
         }
 
         .card-header {
             display: flex;
             align-items: center;
             gap: 14px;
-            margin-bottom: 1.6rem;
+            margin-bottom: 1.4rem;
             border-left: 5px solid var(--primary);
             padding-left: 1rem;
         }
 
         .card-header i {
-            font-size: 2.3rem;
+            font-size: 2.2rem;
             color: var(--primary);
-            background: #FFF1E6;
+            background: linear-gradient(145deg, #FFF1E6, #FFE9DD);
             padding: 12px;
-            border-radius: 24px;
+            border-radius: 22px;
+            transition: all 0.3s;
+        }
+
+        .service-card:hover .card-header i {
+            transform: scale(1.05) rotate(2deg);
+            background: var(--primary);
+            color: white;
+            box-shadow: 0 8px 20px rgba(194,93,46,0.3);
         }
 
         .card-header h2 {
-            font-size: 1.8rem;
+            font-size: 1.65rem;
             font-weight: 800;
             color: #1E4E54;
         }
@@ -207,7 +322,7 @@
 
         .service-list li i {
             color: var(--primary);
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             margin-top: 2px;
         }
 
@@ -215,7 +330,7 @@
             text-align: center;
             font-size: 2.2rem;
             font-weight: 700;
-            margin-bottom: 2rem;
+            margin-bottom: 1.8rem;
             color: #2A5B62;
             position: relative;
         }
@@ -223,75 +338,79 @@
         .section-title:after {
             content: '';
             display: block;
-            width: 70px;
-            height: 3px;
-            background: var(--primary);
-            margin: 10px auto 0;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            margin: 12px auto 0;
             border-radius: 4px;
         }
 
-        /* stats fresh background */
+        /* Stats - Glossy */
         .stats-section {
-            background: linear-gradient(120deg, #FCF4E8, #F9EADB);
-            border-radius: 2rem;
+            background: linear-gradient(135deg, rgba(252, 244, 232, 0.95), rgba(249, 234, 219, 0.98));
+            backdrop-filter: blur(4px);
+            border-radius: 2.2rem;
             padding: 2rem 1.5rem;
             margin: 2rem 0 3rem;
             text-align: center;
+            border: 1px solid rgba(194, 93, 46, 0.25);
+            box-shadow: var(--shadow-sm);
         }
 
         .stats-grid {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 2rem;
+            gap: 1.5rem;
         }
 
         .stat-item {
-            flex: 1;
-            min-width: 150px;
-            background: rgba(255, 250, 240, 0.9);
+            flex: 1 1 140px;
+            background: rgba(255, 255, 255, 0.95);
             border-radius: 1.8rem;
-            padding: 1.4rem 0.5rem;
-            backdrop-filter: blur(2px);
-            transition: 0.2s;
+            padding: 1.2rem 0.5rem;
+            transition: all 0.3s;
+            cursor: default;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+        }
+
+        .stat-item:hover {
+            transform: translateY(-6px);
+            background: white;
+            box-shadow: 0 18px 28px -8px rgba(194,93,46,0.2);
         }
 
         .stat-number {
-            font-size: 2.5rem;
+            font-size: 2.4rem;
             font-weight: 800;
             color: var(--primary);
         }
 
-        .stat-label {
-            font-size: 0.9rem;
-            font-weight: 600;
-            color: #5C6F78;
-        }
-
-        /* leadership cards refined */
+        /* Owners - Enhanced */
         .owners-grid {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 2.5rem;
+            gap: 2rem;
             margin-top: 1rem;
         }
 
         .owner-card {
             background: #FFFFFF;
             border-radius: 2rem;
-            padding: 1.8rem;
+            padding: 1.6rem;
             width: 280px;
             text-align: center;
-            transition: all 0.3s;
-            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.04);
+            transition: all 0.4s;
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.04);
             border: 1px solid #F2E4D8;
+            position: relative;
         }
 
         .owner-card:hover {
-            transform: translateY(-6px);
+            transform: translateY(-8px);
             border-color: var(--primary);
-            box-shadow: 0 20px 30px -12px rgba(194, 93, 46, 0.15);
+            box-shadow: 0 28px 36px -14px rgba(194, 93, 46, 0.28);
         }
 
         .owner-img {
@@ -300,8 +419,14 @@
             border-radius: 50%;
             overflow: hidden;
             margin: 0 auto 1rem;
-            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
             border: 3px solid var(--primary);
+            transition: 0.3s;
+        }
+
+        .owner-card:hover .owner-img {
+            transform: scale(1.02);
+            border-color: var(--secondary);
         }
 
         .owner-img img {
@@ -311,68 +436,53 @@
         }
 
         .owner-name {
-            font-size: 1.6rem;
+            font-size: 1.5rem;
             font-weight: 800;
             color: #2C4E54;
         }
-
-        .owner-name small {
-            font-weight: 500;
-            font-size: 0.8rem;
-            color: #C25D2E;
-            display: block;
-            margin-top: 5px;
-        }
-
+        
         .owner-desc {
-            font-size: 0.85rem;
-            color: #49656E;
-            margin: 12px 0;
+            font-size: 0.8rem;
+            color: #5D767F;
+            margin: 8px 0 12px;
+            line-height: 1.45;
         }
 
         .btn-call {
             display: inline-flex;
             align-items: center;
             gap: 6px;
-            background: #FFF4EA;
-            border-radius: 40px;
-            padding: 6px 16px;
-            font-size: 0.85rem;
-            color: var(--primary);
+            background: #F5EDE3;
+            padding: 7px 16px;
+            border-radius: 60px;
             text-decoration: none;
+            color: var(--primary-dark);
             font-weight: 600;
-            margin-top: 10px;
-            transition: 0.2s;
-            border: 1px solid #F0DECC;
+            font-size: 0.8rem;
+            transition: all 0.25s;
         }
 
         .btn-call:hover {
             background: var(--primary);
             color: white;
+            transform: scale(1.02);
         }
 
-        .about-box {
-            background: #FFFCF8;
-            border-radius: 2rem;
-            padding: 2rem;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.03);
-            border: 1px solid #F2E4D6;
-            line-height: 1.6;
-        }
-
-        /* Industries grid modern */
+        /* Industries - Interactive */
         .industries-section {
             background: #FFFFFF;
             border-radius: 2rem;
             padding: 2rem;
             margin: 2rem 0;
             border: 1px solid #F0E2D4;
+            transition: 0.3s;
+            box-shadow: var(--shadow-sm);
         }
 
         .industries-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-            gap: 1.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+            gap: 1.2rem;
             text-align: center;
         }
 
@@ -380,13 +490,15 @@
             padding: 1rem;
             background: #FFFBF5;
             border-radius: 1.5rem;
-            transition: 0.2s;
+            transition: all 0.3s;
+            cursor: pointer;
         }
 
         .industry-item i {
-            font-size: 2rem;
+            font-size: 1.9rem;
             color: var(--primary);
             margin-bottom: 0.6rem;
+            transition: 0.2s;
         }
 
         .industry-item span {
@@ -395,13 +507,18 @@
         }
 
         .industry-item:hover {
-            background: #FEF0E4;
-            transform: translateY(-3px);
+            background: linear-gradient(145deg, #FEF0E4, #FFE9DB);
+            transform: translateY(-5px);
+            box-shadow: 0 12px 20px rgba(194,93,46,0.12);
         }
 
-        /* testimonials carousel new theme */
+        .industry-item:hover i {
+            transform: scale(1.1);
+        }
+
+        /* Testimonials */
         .testimonial-carousel {
-            background: #FFFCF7;
+            background: linear-gradient(135deg, #FFFCF7, #FFF9F2);
             border-radius: 2rem;
             padding: 2rem;
             margin: 2rem 0;
@@ -413,81 +530,96 @@
             border-radius: 1.8rem;
             padding: 1.8rem;
             text-align: center;
-            border-left: 5px solid var(--primary);
-            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.02);
+            border-left: 6px solid var(--primary);
+            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.04);
+            transition: 0.2s;
         }
 
-        /* contact form with warm palette */
+        /* Contact Form - Premium */
         .contact-form-section {
-            background: #FFF8F0;
+            background: linear-gradient(125deg, #FFF8F0, #FFF5EA);
             border-radius: 2rem;
             padding: 2rem;
             margin: 2rem 0;
             border: 1px solid #EBDBCA;
+            box-shadow: var(--shadow-sm);
         }
 
         .enquiry-form input, .enquiry-form textarea, .enquiry-form select {
-            padding: 12px 20px;
-            border-radius: 50px;
+            padding: 14px 22px;
+            border-radius: 60px;
             border: 1px solid #E5D5C4;
             font-family: 'Plus Jakarta Sans', sans-serif;
             background: white;
             outline: none;
-            transition: 0.2s;
+            transition: 0.25s;
             width: 100%;
             margin-bottom: 1rem;
+            font-size: 0.95rem;
         }
 
         .enquiry-form input:focus, .enquiry-form textarea:focus, .enquiry-form select:focus {
             border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(194, 93, 46, 0.1);
+            box-shadow: 0 0 0 4px rgba(194, 93, 46, 0.15);
         }
 
         .enquiry-form button {
-            background: var(--primary);
+            background: var(--gradient-primary);
             color: white;
             border: none;
-            padding: 12px;
+            padding: 14px;
             border-radius: 60px;
             font-weight: 700;
             cursor: pointer;
-            transition: 0.2s;
+            transition: all 0.3s;
             width: 100%;
+            font-size: 1rem;
+            letter-spacing: 0.3px;
         }
 
         .enquiry-form button:hover {
-            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 12px 24px rgba(194, 93, 46, 0.45);
         }
 
         .address-block {
             background: #FFF3E8;
             border-radius: 1.6rem;
-            padding: 1rem 1.8rem;
+            padding: 0.9rem 1.2rem;
             display: flex;
             align-items: center;
             justify-content: center;
             flex-wrap: wrap;
-            gap: 1rem;
-            margin-top: 2rem;
+            gap: 0.8rem;
+            margin-top: 1.2rem;
             border-left: 8px solid var(--primary);
+            font-size: 0.85rem;
         }
 
+        /* WhatsApp Float */
         .whatsapp-float {
             position: fixed;
-            bottom: 25px;
-            right: 25px;
+            bottom: 24px;
+            right: 22px;
             background: #25D366;
             color: white;
-            width: 58px;
-            height: 58px;
+            width: 60px;
+            height: 60px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 2rem;
-            box-shadow: 0 6px 18px rgba(37, 211, 102, 0.35);
-            transition: 0.2s;
+            box-shadow: 0 8px 24px rgba(37, 211, 102, 0.45);
+            transition: all 0.3s;
             z-index: 1000;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5); }
+            70% { box-shadow: 0 0 0 14px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
         }
 
         .whatsapp-float:hover {
@@ -498,11 +630,11 @@
         .back-to-top {
             position: fixed;
             bottom: 100px;
-            right: 25px;
+            right: 22px;
             background: var(--primary);
             color: white;
-            width: 45px;
-            height: 45px;
+            width: 48px;
+            height: 48px;
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -511,7 +643,8 @@
             visibility: hidden;
             transition: 0.3s;
             z-index: 999;
-            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
         }
 
         .back-to-top.show {
@@ -525,45 +658,42 @@
             padding: 1.2rem;
             color: #7E8F98;
             border-top: 1px solid #EDE0D2;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
         }
 
-        .logo img {
-            width: 80px;
-            border-radius: 14px;
-            background: white;
-            padding: 4px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+        .about-box {
+            background: #FFFCF8;
+            border-radius: 1.8rem;
+            padding: 1.8rem;
+            border: 1px solid #F2E4D6;
+            transition: 0.2s;
         }
-
         .success-msg {
-            margin-top: 12px;
-            text-align: center;
+            margin-top: 10px;
             font-size: 0.85rem;
+            color: #1E6B6F;
             font-weight: 500;
         }
 
-        @media (max-width: 700px) {
-            .container {
-                padding: 1rem;
-            }
-            .hero h1 {
-                font-size: 1.9rem;
-            }
-            .navbar {
-                flex-direction: column;
-                top: 10px;
-            }
+        @media (max-width: 620px) {
+            .container { padding: 0.6rem 1rem; }
+            .navbar { flex-direction: column; border-radius: 32px; padding: 0.8rem 1rem; }
+            .hero h1 { font-size: 2rem; }
+            .hero p.tagline { font-size: 0.9rem; }
+            .section-title { font-size: 1.8rem; }
+            .card-header h2 { font-size: 1.4rem; }
+            .owner-card { width: 100%; max-width: 300px; }
         }
     </style>
 </head>
 <body>
 
+<canvas id="particles-canvas"></canvas>
+
 <div class="container">
-    <!-- Sticky Nav -->
     <div class="navbar">
         <div class="logo">
-            <img src="image/logo.png" alt="JBH Logo" style="width: 70px;">
+            <img src="image/logo.png" alt="JBH Logo" onerror="this.src='https://placehold.co/70x70?text=JBH'">
         </div>
         <div class="nav-links">
             <a href="#">Home</a>
@@ -572,58 +702,61 @@
             <a href="#leadership">Leadership</a>
             <a href="#contact">Contact</a>
         </div>
-        <a href="tel:9897507088" class="nav-contact"><i class="fas fa-phone-alt"></i> +91 98975 07088</a>
+        <a href="tel:9897507088" class="nav-contact"><i class="fas fa-phone-alt"></i> CALL - US</a>
     </div>
 
-    <!-- Hero Redesigned -->
     <div class="hero" data-aos="fade-up" id="home">
-        <div class="logo" style="margin-bottom: 0.5rem;">
-            <img src="image/logo.png" alt="JBH Growth" style="width: 90px;">
+        <div style="margin-bottom: 0.5rem;">
+            <img src="image/logo.png" alt="JBH Growth" style="width: 90px;" onerror="this.src='https://placehold.co/90x90?text=JBH'">
         </div>
         <h1>JBH GROWTH MANPOWER</h1>
         <p class="tagline">Where talent meets opportunity — agile workforce, human-centric solutions</p>
     </div>
 
-    <!-- Services Section -->
-    <div id="services">
-        <div class="services-grid">
-            <div class="service-card" data-aos="fade-up" data-aos-delay="100">
-                <div class="card-header">
-                    <i class="fas fa-users-viewfinder"></i>
-                    <h2>Off-Roll Manpower</h2>
+    <div id="leadership">
+        <div class="owners-section" data-aos="fade-up">
+            <h2 class="section-title">Visionary Leadership</h2>
+            <div class="owners-grid">
+                <div class="owner-card">
+                    <div class="owner-img"><img src="image/Aniket.jpg" alt="Aniket" onerror="this.src='https://placehold.co/120x120?text=Aniket'"></div>
+                    <div class="owner-name">Aniket <br><small>(Managing Director)</small></div>
+                    <p class="owner-desc">When our partners succeed, we succeed. We develop a keen understanding of our partner's business and talent-related needs. We provides customized manpower solutions and deliver the talent you need to win.</p>
+                    <a href="tel:9897507088" class="btn-call"><i class="fas fa-phone"></i> Contact   us</a>
                 </div>
-                <ul class="service-list">
-                    <li><i class="fas fa-user-plus"></i><span>Skilled candidates as per exact requirement</span></li>
-                    <li><i class="fas fa-database"></i><span>Pre-screened & verified talent pool</span></li>
-                    <li><i class="fas fa-chart-simple"></i><span>Skill-based profiling & rapid deployment</span></li>
-                </ul>
-            </div>
-            <div class="service-card" data-aos="fade-up" data-aos-delay="200">
-                <div class="card-header">
-                    <i class="fas fa-handshake"></i>
-                    <h2>Contract Staffing</h2>
+                <div class="owner-card">
+                    <div class="owner-img"><img src="image/Abhishek.jpg" alt="Abhishek" onerror="this.src='https://placehold.co/120x120?text=Abhishek'"></div>
+                    <div class="owner-name">Abhishek <br><small>(CFO)</small></div>
+                    <p class="owner-desc">We executes investments as a result of this selection process.
+Without changing our capital allocation or investment strategy, we will continue to move forward based on rigorous financial discipline.</p>
+                    <a href="tel:8755571367" class="btn-call"><i class="fas fa-phone"></i> Contact   us</a>
                 </div>
-                <ul class="service-list">
-                    <li><i class="fas fa-building"></i><span>On-site managed workforce solutions</span></li>
-                    <li><i class="fas fa-chart-line"></i><span>Scalable teams for project peaks</span></li>
-                    <li><i class="fas fa-graduation-cap"></i><span>Industry-trained & experienced associates</span></li>
-                </ul>
-            </div>
-            <div class="service-card" data-aos="fade-up" data-aos-delay="300">
-                <div class="card-header">
-                    <i class="fas fa-coins"></i>
-                    <h2>Payroll Management</h2>
+                <div class="owner-card">
+                    <div class="owner-img"><img src="image/akash.jpg" alt="akiiiiiiiii" onerror="this.src='https://placehold.co/120x120?text=Akash'"></div>
+                    <div class="owner-name">akiiiiiiii <br><small>(CEO)</small></div>
+                    <p class="owner-desc">We have an incredible team of both administrative and field professionals who share a common goal: to bring value to our customers. We are aiming for further growth so that we can earn stable and continuous profit as a comprehensive manpower service company.</p>
+                    <a href="tel:9899006796" class="btn-call"><i class="fas fa-phone"></i> Contact   us</a>
                 </div>
-                <ul class="service-list">
-                    <li><i class="fas fa-file-invoice"></i><span>End-to-end payroll & compliance</span></li>
-                    <li><i class="fas fa-laptop"></i><span>Custom ERP with employee self-service</span></li>
-                    <li><i class="fas fa-shield-alt"></i><span>Statutory adherence & transparency</span></li>
-                </ul>
             </div>
         </div>
     </div>
 
-    <!-- Stats Section refined -->
+    <div id="services">
+        <div class="services-grid">
+            <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="card-header"><i class="fas fa-users-viewfinder"></i><h2>Off-Roll Manpower</h2></div>
+                <ul class="service-list"><li><i class="fas fa-user-plus"></i><span>Skilled candidates as per exact requirement</span></li><li><i class="fas fa-database"></i><span>Pre-screened & verified talent pool</span></li><li><i class="fas fa-chart-simple"></i><span>Skill-based profiling & rapid deployment</span></li></ul>
+            </div>
+            <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="card-header"><i class="fas fa-handshake"></i><h2>Contract Staffing</h2></div>
+                <ul class="service-list"><li><i class="fas fa-building"></i><span>On-site managed workforce solutions</span></li><li><i class="fas fa-chart-line"></i><span>Scalable teams for project peaks</span></li><li><i class="fas fa-graduation-cap"></i><span>Industry-trained & experienced associates</span></li></ul>
+            </div>
+            <div class="service-card" data-aos="fade-up" data-aos-delay="300">
+                <div class="card-header"><i class="fas fa-coins"></i><h2>Payroll Management</h2></div>
+                <ul class="service-list"><li><i class="fas fa-file-invoice"></i><span>End-to-end payroll & compliance</span></li><li><i class="fas fa-laptop"></i><span>Custom ERP with employee self-service</span></li><li><i class="fas fa-shield-alt"></i><span>Statutory adherence & transparency</span></li></ul>
+            </div>
+        </div>
+    </div>
+
     <div class="stats-section" data-aos="zoom-in">
         <h2 class="section-title" style="margin-bottom: 1rem;">Our Footprint</h2>
         <div class="stats-grid">
@@ -634,19 +767,17 @@
         </div>
     </div>
 
-    <!-- About Us -->
     <div id="about">
         <div class="about-section" data-aos="fade-right">
             <h2 class="section-title">About JBH Growth</h2>
             <div class="about-box">
-                <h3 style="color: #C25D2E;">Trusted Partner in Talent Ecosystem</h3>
+                <h3 style="color: #C25D2E; font-size:1.4rem; margin-bottom: 0.8rem;">Trusted Partner in Talent Ecosystem</h3>
                 <p>JBH Growth Manpower Private Limited is a next-gen manpower & staffing firm committed to bridging the gap between exceptional talent and ambitious enterprises. We blend deep industry insight with agile HR practices to deliver custom-built workforce solutions — from off-roll staffing to payroll automation.</p>
-                <p>Our mission is to empower businesses with high-quality, compliant and scalable human capital while providing career seekers with meaningful opportunities. With integrity at our core, we ensure transparency, speed, and long-term partnerships.</p>
+                <p style="margin-top: 12px;">Our mission is to empower businesses with high-quality, compliant and scalable human capital while providing career seekers with meaningful opportunities. With integrity at our core, we ensure transparency, speed, and long-term partnerships.</p>
             </div>
         </div>
     </div>
 
-    <!-- Industries We Serve - updated theme -->
     <div class="industries-section" data-aos="fade-up">
         <h2 class="section-title">Industries We Empower</h2>
         <div class="industries-grid">
@@ -661,72 +792,29 @@
         </div>
     </div>
 
-    <!-- Leadership Section -->
-    <div id="leadership">
-        <div class="owners-section" data-aos="fade-up">
-            <h2 class="section-title">Visionary Leadership</h2>
-            <div class="owners-grid">
-                <div class="owner-card">
-                    <div class="owner-img"><img src="image/Aniket.jpg" alt="Aniket"></div>
-                    <div class="owner-name">Aniket <small>Managing Director and OWNER</small></div>
-                    <p class="owner-desc">When our partners succeed, we succeed. We develop a keen understanding of our partner's business and talent-related needs. We provides customized manpower solutions and deliver the talent you need to win.</p>
-                    <a href="tel:9897507088" class="btn-call"><i class="fas fa-phone"></i> +91 98975 07088</a>
-                </div>
-                <div class="owner-card">
-                    <div class="owner-img"><img src="image/Abhishek.jpg" alt="Abhishek"></div>
-                    <div class="owner-name">Abhishek <small>CFO</small></div>
-                    <p class="owner-desc">We executes investments as a result of this selection process.
-Without changing our capital allocation or investment strategy, we will continue to move forward based on rigorous financial discipline.</p>
-                    <a href="tel:8755571367" class="btn-call"><i class="fas fa-phone"></i> +91 87555 71367</a>
-                </div>
-                <div class="owner-card">
-                    <div class="owner-img"><img src="image/akash.jpg" alt="Akiiiiiiiiii"></div>
-                    <div class="owner-name">Akiiiiiiiii <small>CEO</small></div>
-                    <p class="owner-desc">We have an incredible team of both administrative and field professionals who share a common goal: to bring value to our customers. We are aiming for further growth so that we can earn stable and continuous profit as a comprehensive manpower service company.</p>
-                    <a href="tel:9899006796" class="btn-call"><i class="fas fa-phone"></i> +91 98990 06796</a>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Testimonial Carousel -->
     <div class="testimonial-carousel" data-aos="flip-up">
         <h2 class="section-title">What Clients Say</h2>
         <div class="swiper testimonialSwiper">
             <div class="swiper-wrapper">
-                <div class="swiper-slide testimonial-slide"><i class="fas fa-quote-left" style="color: #C25D2E;"></i><p class="testimonial-text">"JBH's staffing agility helped us scale our warehouse team in record time. Highly recommended!"</p><div class="client-name">— Rohan Kapoor</div><div class="client-role">Logistics Head</div></div>
-                <div class="swiper-slide testimonial-slide"><i class="fas fa-quote-left" style="color: #C25D2E;"></i><p class="testimonial-text">"Their payroll ERP is a game-changer. Employees feel secure, and we save hours of manual work."</p><div class="client-name">— Neha Singh</div><div class="client-role">Finance Controller</div></div>
-                <div class="swiper-slide testimonial-slide"><i class="fas fa-quote-left" style="color: #C25D2E;"></i><p class="testimonial-text">"From blue-collar to white-collar, JBH delivers quality manpower with zero compliance gaps."</p><div class="client-name">— Amit Joshi</div><div class="client-role">Plant Director</div></div>
-                <div class="swiper-slide testimonial-slide"><i class="fas fa-quote-left" style="color: #C25D2E;"></i><p class="testimonial-text">"Professional, transparent, and proactive. The go-to partner for contract staffing."</p><div class="client-name">— Meera Iyer</div><div class="client-role">HR Business Partner</div></div>
+                <div class="swiper-slide testimonial-slide"><i class="fas fa-quote-left" style="color: #C25D2E; font-size: 2rem; opacity: 0.7;"></i><p style="margin: 12px 0; font-style: italic;">"JBH's staffing agility helped us scale our warehouse team in record time. Highly recommended!"</p><div class="client-name" style="font-weight:700;">— Rohan Kapoor</div><div class="client-role">Logistics Head</div></div>
+                <div class="swiper-slide testimonial-slide"><i class="fas fa-quote-left" style="color: #C25D2E; font-size: 2rem; opacity: 0.7;"></i><p style="margin: 12px 0; font-style: italic;">"Their payroll ERP is a game-changer. Employees feel secure, and we save hours of manual work."</p><div class="client-name" style="font-weight:700;">— Neha Singh</div><div class="client-role">Finance Controller</div></div>
+                <div class="swiper-slide testimonial-slide"><i class="fas fa-quote-left" style="color: #C25D2E; font-size: 2rem; opacity: 0.7;"></i><p style="margin: 12px 0; font-style: italic;">"From blue-collar to white-collar, JBH delivers quality manpower with zero compliance gaps."</p><div class="client-name" style="font-weight:700;">— Amit Joshi</div><div class="client-role">Plant Director</div></div>
             </div>
             <div class="swiper-pagination"></div>
         </div>
     </div>
 
-    <!-- Contact Form + WhatsApp callback with custom message -->
     <div id="contact">
         <div class="contact-form-section" data-aos="fade-up">
             <h2 class="section-title">Let’s Collaborate</h2>
-            <div class="form-grid" style="display: flex; flex-wrap: wrap; gap: 2rem;">
-                <div class="form-info" style="flex:1">
-                    <i class="fas fa-headset" style="font-size: 2rem; color: #C25D2E;"></i>
-                    <p style="margin: 10px 0;">Need a custom staffing plan? Drop your details, and our team will connect via WhatsApp within hours.</p>
-                    <div class="address-block" style="background:#FFF4E8;">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <span>Vill. Beel Akbarpur, Near VGI Campus, Dadri, Gautam Buddha Nagar (U.P.) - 203207</span>
-                    </div>
-                </div>
+            <div style="display: flex; flex-wrap: wrap; gap: 2rem;">
+                <div style="flex:1; min-width: 200px;"><i class="fas fa-headset" style="font-size: 2rem; color: #C25D2E;"></i><p style="margin: 12px 0;">Need a custom staffing plan? Drop your details, and our team will connect via WhatsApp within hours.</p>
+                <div class="address-block"><i class="fas fa-map-marker-alt"></i><span>Vill. Beel Akbarpur, Near VGI Campus, Dadri, Gautam Buddha Nagar (U.P.) - 203207</span></div></div>
                 <form class="enquiry-form" id="contactForm" style="flex:1.5">
                     <input type="text" id="name" placeholder="Full name *" required>
                     <input type="tel" id="phone" placeholder="Mobile number *" required>
                     <input type="email" id="email" placeholder="Email">
-                    <select id="serviceInterest">
-                        <option value="">Service of interest</option>
-                        <option>Off-Roll Manpower</option>
-                        <option>Contract Staffing</option>
-                        <option>Payroll Management</option>
-                        <option>HR Consulting</option>
-                    </select>
+                    <select id="serviceInterest"><option value="">Service of interest</option><option>Off-Roll Manpower</option><option>Contract Staffing</option><option>Payroll Management</option></select>
                     <textarea rows="2" id="message" placeholder="Tell us your requirement..."></textarea>
                     <button type="submit" id="submitBtn"><i class="fab fa-whatsapp"></i> Send & Get Callback on WhatsApp</button>
                     <div id="formStatus" class="success-msg"></div>
@@ -734,118 +822,44 @@ Without changing our capital allocation or investment strategy, we will continue
             </div>
         </div>
     </div>
-
-    <div class="address-block" style="justify-content: space-between; flex-wrap: wrap;">
-        <i class="fas fa-envelope"></i> careers@jbhgrowth.com &nbsp;|&nbsp; <i class="fas fa-globe"></i> www.jbhgrowth.com
-    </div>
-    <footer>
-        <i class="far fa-copyright"></i> 2025 JBH GROWTH MANPOWER PRIVATE LIMITED — Future-ready HR & Staffing <br>
-        <span><i class="fas fa-phone-alt"></i> +91-9897507088 | <i class="fas fa-map-marker-alt"></i> NCR Region</span>
-    </footer>
+    <div class="address-block" style="justify-content: space-between; flex-wrap: wrap;"><i class="fas fa-envelope"></i> careers@jbhgrowth.com &nbsp;|&nbsp; <i class="fas fa-globe"></i> www.jbhgrowth.com</div>
+    <footer><i class="far fa-copyright"></i> 2025 JBH GROWTH MANPOWER PRIVATE LIMITED — Future-ready HR & Staffing <br><span><i class="fas fa-phone-alt"></i> +91-9897507088 | <i class="fas fa-map-marker-alt"></i> NCR Region</span></footer>
 </div>
 
-<!-- Floating elements: WhatsApp number updated to 8755571367 with custom message "HELLO JBH Growth, i need a job" -->
 <a href="https://wa.me/918755571367?text=HELLO%20JBH%20Growth%2C%20i%20need%20a%20job" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
 <a href="#" class="back-to-top" id="backToTop"><i class="fas fa-arrow-up"></i></a>
 
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script>
-    AOS.init({ duration: 700, once: true });
+    AOS.init({ duration: 700, once: true, offset: 20 });
+    new Swiper('.testimonialSwiper', { loop: true, autoplay: { delay: 4000, disableOnInteraction: false }, pagination: { el: '.swiper-pagination', clickable: true }, slidesPerView: 1, breakpoints: { 640: { slidesPerView: 2 }, 1024: { slidesPerView: 3 } } });
 
-    new Swiper('.testimonialSwiper', {
-        loop: true,
-        autoplay: { delay: 4000, disableOnInteraction: false },
-        pagination: { el: '.swiper-pagination', clickable: true },
-        slidesPerView: 1,
-        breakpoints: { 768: { slidesPerView: 2 }, 1024: { slidesPerView: 3 } }
-    });
-
-    // dynamic number animation
-    const stats = [
-        { id: "statClients", target: 158, suffix: "+" },
-        { id: "statPlacements", target: 2780, suffix: "+" },
-        { id: "statYears", target: 5, suffix: "+" },
-        { id: "statCities", target: 14, suffix: "+" }
-    ];
+    const stats = [{ id: "statClients", target: 158 }, { id: "statPlacements", target: 2780 }, { id: "statYears", target: 5 }, { id: "statCities", target: 14 }];
+    let counted = false;
     function runCounter() {
-        stats.forEach(stat => {
-            const el = document.getElementById(stat.id);
-            if (!el) return;
-            let start = 0;
-            const end = stat.target;
-            const step = end / 45;
-            const timer = setInterval(() => {
-                start += step;
-                if (start >= end) {
-                    clearInterval(timer);
-                    el.innerText = end + stat.suffix;
-                } else {
-                    el.innerText = Math.floor(start) + stat.suffix;
-                }
-            }, 25);
-        });
+        if(counted) return;
+        counted = true;
+        stats.forEach(stat => { let el = document.getElementById(stat.id); if(!el) return; let start = 0, end = stat.target, step = end / 45, timer = setInterval(() => { start += step; if (start >= end) { clearInterval(timer); el.innerText = end + "+"; } else { el.innerText = Math.floor(start) + "+"; } }, 28); });
     }
-    const observerStat = new IntersectionObserver((entries) => {
-        if (entries[0].isIntersecting) {
-            runCounter();
-            observerStat.unobserve(entries[0].target);
-        }
-    }, { threshold: 0.3 });
-    const statSection = document.querySelector('.stats-section');
-    if (statSection) observerStat.observe(statSection);
+    const observerStat = new IntersectionObserver((entries) => { if (entries[0].isIntersecting) { runCounter(); observerStat.unobserve(entries[0].target); } }, { threshold: 0.3 });
+    const statSection = document.querySelector('.stats-section'); if (statSection) observerStat.observe(statSection);
 
-    // WhatsApp callback integration: Now sends job enquiry with custom message format
     const form = document.getElementById('contactForm');
-    const statusDiv = document.getElementById('formStatus');
-    // Using updated WhatsApp number 8755571367 (without country code prefix issue, we use full international format)
-    const TARGET_WA = "918755571367"; // 87555 71367 in international format
+    form.addEventListener('submit', (e) => { e.preventDefault(); const name = document.getElementById('name').value.trim(), phone = document.getElementById('phone').value.trim(); if (!name || !phone) { document.getElementById('formStatus').innerHTML = '<i class="fas fa-exclamation-triangle"></i> Name and mobile number required.'; setTimeout(() => document.getElementById('formStatus').innerHTML = '', 2500); return; } const email = document.getElementById('email').value, service = document.getElementById('serviceInterest').value, msg = document.getElementById('message').value; let waMsg = `HELLO JBH Growth, I'm interested%0A%0A*Name:* ${encodeURIComponent(name)}%0A*Phone:* ${encodeURIComponent(phone)}%0A`; if (email) waMsg += `*Email:* ${encodeURIComponent(email)}%0A`; if (service) waMsg += `*Service:* ${encodeURIComponent(service)}%0A`; if (msg) waMsg += `*Requirement:* ${encodeURIComponent(msg)}%0A`; window.open(`https://wa.me/918755571367?text=${waMsg}`, '_blank'); document.getElementById('formStatus').innerHTML = '<i class="fas fa-check-circle"></i> Redirecting to WhatsApp!'; setTimeout(() => { form.reset(); document.getElementById('formStatus').innerHTML = ''; }, 2800); });
 
-    form.addEventListener('submit', (e) => {
-        e.preventDefault();
-        const name = document.getElementById('name').value.trim();
-        const phone = document.getElementById('phone').value.trim();
-        if (!name || !phone) {
-            statusDiv.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Name and mobile number required.';
-            statusDiv.style.color = "#c25d2e";
-            setTimeout(() => statusDiv.innerHTML = '', 2800);
-            return;
-        }
-        const email = document.getElementById('email').value.trim();
-        const service = document.getElementById('serviceInterest').value;
-        const msg = document.getElementById('message').value.trim();
-        // Build message: starts with "HELLO JBH Growth, i need a job" then details
-        let waMsg = `HELLO JBH Growth, i need a job%0A%0A*Name:* ${encodeURIComponent(name)}%0A*Phone:* ${encodeURIComponent(phone)}%0A`;
-        if (email) waMsg += `*Email:* ${encodeURIComponent(email)}%0A`;
-        if (service) waMsg += `*Service Interested:* ${encodeURIComponent(service)}%0A`;
-        if (msg) waMsg += `*Requirement:* ${encodeURIComponent(msg)}%0A`;
-        waMsg += `%0A_Request from website_`;
-        const waUrl = `https://wa.me/${TARGET_WA}?text=${waMsg}`;
-        const btn = document.getElementById('submitBtn');
-        const original = btn.innerHTML;
-        btn.disabled = true;
-        btn.innerHTML = '<i class="fas fa-spinner fa-pulse"></i> Redirecting...';
-        setTimeout(() => {
-            window.open(waUrl, '_blank');
-            statusDiv.innerHTML = '<i class="fas fa-check-circle"></i> Message sent! Our team will reach out shortly.';
-            statusDiv.style.color = "#1E6B6F";
-            form.reset();
-            btn.disabled = false;
-            btn.innerHTML = original;
-            setTimeout(() => statusDiv.innerHTML = '', 5000);
-        }, 400);
-    });
+    const backTop = document.getElementById('backToTop'); window.addEventListener('scroll', () => { if (window.scrollY > 260) backTop.classList.add('show'); else backTop.classList.remove('show'); }); backTop.addEventListener('click', (e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); });
 
-    // back to top
-    const backTop = document.getElementById('backToTop');
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 280) backTop.classList.add('show');
-        else backTop.classList.remove('show');
-    });
-    backTop.addEventListener('click', (e) => {
-        e.preventDefault();
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
+    // particles with better performance
+    const canvas = document.getElementById('particles-canvas');
+    const ctx = canvas.getContext('2d');
+    let width = window.innerWidth, height = window.innerHeight;
+    let particles = [];
+    function resizeCanvas() { width = window.innerWidth; height = window.innerHeight; canvas.width = width; canvas.height = height; }
+    function initParticles() { particles = []; let particleCount = Math.min(55, Math.floor(width * 0.07)); for (let i = 0; i < particleCount; i++) { particles.push({ x: Math.random() * width, y: Math.random() * height, radius: Math.random() * 3 + 1.2, alpha: Math.random() * 0.4 + 0.1, speedX: (Math.random() - 0.5) * 0.3, speedY: (Math.random() - 0.5) * 0.2 }); } }
+    function drawParticles() { if (!ctx) return; ctx.clearRect(0, 0, width, height); for (let p of particles) { ctx.beginPath(); ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2); ctx.fillStyle = `rgba(194, 93, 46, ${p.alpha})`; ctx.fill(); p.x += p.speedX; p.y += p.speedY; if (p.x < 0) p.x = width; if (p.x > width) p.x = 0; if (p.y < 0) p.y = height; if (p.y > height) p.y = 0; } requestAnimationFrame(drawParticles); }
+    window.addEventListener('resize', () => { resizeCanvas(); initParticles(); });
+    resizeCanvas(); initParticles(); drawParticles();
 </script>
 </body>
 </html>
